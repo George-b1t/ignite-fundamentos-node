@@ -36,4 +36,13 @@ export class Database {
 
     return data;
   }
+
+  delete(table, id) {
+    if (Array.isArray(this.#database[table])) {
+      this.#database[table] =
+        this.#database[table].filter(item => item.id !== id);
+
+      this.#persist();
+    }
+  }
 }
